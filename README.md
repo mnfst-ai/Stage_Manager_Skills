@@ -1,87 +1,165 @@
-# Stage Manager Skills
-**Artful Making skills for vibe coders** — helping you maintain agency, coherence, and soul while building with AI coding tools.
+# Stage Manager — Artful Making Skill Library
 
-Part of [Stage Manager](https://stage-manager.ai) by [Manifest AI](https://github.com/Mnfst-AI).
+> **How you move through your work is what you build.**
 
----
+A free, open collection of skills for vibe coders who want to stay the author while building with AI tools.
 
-> *How you move through your work is what you build.*
-
-The builders who lead aren't the fastest coders. They're the ones who can hold the plot, maintain trajectory, and keep the soul of the work intact while the AI runs at speed.
-
-That's a practice. And like any practice, it needs a ritual.
-
-Before your next build session, try this:
-1. **Gratitude** — name one thing you're grateful for in this work
-2. **One Thing** — what's the single most important thing to accomplish today?
-3. **What you need** — what context, clarity, or resource do you need to do it?
-4. **What you want** — what does done feel like? What does it make possible?
-
-These skills help you carry that intention into your build — and keep it alive when the AI wants to run ahead of you.
+These skills help you expand options before converging, maintain coherence across a build, and keep the soul of the work intact while Claude Code, Cursor, Replit, or any agentic coding tool runs at speed.
 
 ---
 
-## Install
-```bash
-claude /plugin marketplace add https://github.com/Mnfst-AI/Stage_Manager_Skills
-claude /plugin install stage-manager
+## What These Skills Are
+
+Each skill is a plain-text file — a recipe that tells an AI coach how to help you with a specific moment in your flow cycle. No magic. No proprietary platform required.
+
+Drop them into your system prompt. Reference them in your IDE. Use them with any AI tool that accepts context.
+
+They work best in sequence — but any one of them works on its own.
+
+---
+
+## The Flow Cycle
+
+Stage Manager organizes the builder's work into three nodes:
+
+**Sense** — noticing what wants to be built before building starts  
+**Shape** — exploring the problem space before converging on a solution  
+**Stage** — building in small, intentional increments with full agency
+
+The skills support every phase — and the transitions between them.
+
+---
+
+## The 13 Skills
+
+### Sense Node
+
+| Skill | What It Does |
+|---|---|
+| **Opening Ritual** | Four questions to enter the work with intention — gratitude, one thing, what you need, what you want. Puts you above the line before the first decision. |
+| **Closing Ritual** | Four questions to close a session with care — what landed, what got built, what you learned, what the next session needs. Creates continuity across sessions. |
+| **Pattern Connect** | Finds the thread running through your sparks and observations. Turns scattered sensing into a story worth building. |
+
+### Shape Node
+
+| Skill | What It Does |
+|---|---|
+| **Find the Holes** | Maps every place in a spec where a coding tool will invent behavior you didn't ask for. Quote, name, question — before building starts. |
+| **Collapsed Options** | Finds decisions you already made without knowing it — especially in the area where you're trying to do something genuinely different. Reopens option space before it closes. |
+| **Risk Sequence** | Surfaces the load-bearing assumptions and sequences them by cost-if-wrong. Shows you what to prove first so everything built after is built on solid ground. |
+| **Soul Check** | Reads a full artifact for the original animating idea and checks whether it's still alive. A deep 10–15 minute read. For quick transition checks, use Coherence Check. |
+
+### Shape → Stage Transition
+
+| Skill | What It Does |
+|---|---|
+| **Shape-to-Stage Gate** | Five readiness questions before staging begins. Prevents premature staging (most common) and over-shaping (perfectionism). Runs once, at the boundary, before Chunking. |
+
+### Stage Node
+
+| Skill | What It Does |
+|---|---|
+| **Chunking** | Breaks a story or feature into flow-cycle-sized pieces — each small enough to prompt cleanly, large enough to produce something testable, sequenced by cost of delay. |
+| **Cost of Delay** | Sequences stories and features by what it costs to wait — economic, risk, flow, and joy costs all count equally. Highest cost of delay per unit of size goes first. |
+| **Prompt Craft** | Turns a shaped chunk into a prompt a coding tool can execute without inventing what you didn't ask for. Six parts: context, goal, scope, constraints, definition of done, guardrails. |
+| **Output Review** | Reads what a coding tool just produced against three layers: definition of done, original intent, what it sets up next. Verdicts: Accept, Revise, or Return. Closes the Stage loop. |
+
+### All Nodes
+
+| Skill | What It Does |
+|---|---|
+| **Coherence Check** | A lightweight 2-minute gate at any transition point — between shaping and staging, between chunks, after unexpected output, whenever the plot feels lost. For a deep read on a full artifact, use Soul Check. |
+
+---
+
+## How to Read the Suite
+
+**Risk Sequence** retires load-bearing assumptions before building. Once assumptions are confirmed, **Cost of Delay** sequences the confirmed work.
+
+**Find the Holes** maps gaps the AI will invent into. **Collapsed Options** maps decisions the builder already made without knowing it. Run both before staging.
+
+**Soul Check** is a deep read on a single artifact — 10–15 minutes. **Coherence Check** is the lightweight transition gate — 2 minutes, any artifact, any moment of doubt.
+
+**Opening Ritual** and **Closing Ritual** are two ends of the same thread. The closing ritual's answer to "what does the next session need?" becomes the opening ritual's "one thing."
+
+---
+
+## The Skill Structure
+
+Each SKILL.md contains:
+
+- **Frontmatter** — name and description for skill routing
+- **Your Job** — one clear statement of what this skill does
+- **Your Posture** — the voice and stance for this moment in the flow cycle
+- **How to Receive What Lands** — what to do when the builder arrives with more or less than expected
+- **The Core Method** — questions, layers, or steps specific to this skill
+- **Output Structure** — what the response looks like
+- **Tone Reminders** — what to protect and what to avoid
+- **Part of Stage Manager** — where this skill sits in the suite and how it relates to adjacent skills
+
+---
+
+## Repository Structure
+
+```
+plugins/stage-manager/skills/
+  sense-opening-ritual/SKILL.md
+  sense-closing-ritual/SKILL.md
+  sense-pattern-connect/SKILL.md
+  shape-find-holes/SKILL.md
+  shape-collapsed-options/SKILL.md
+  shape-risk-sequence/SKILL.md
+  shape-soul-check/SKILL.md
+  shape-to-stage-gate/SKILL.md
+  stage-chunking/SKILL.md
+  stage-wsjf/SKILL.md
+  stage-prompt-craft/SKILL.md
+  stage-output-review/SKILL.md
+  coherence-check/SKILL.md
+
+SOUL.md          ← the animating idea behind this library
+README.md        ← this file
 ```
 
 ---
 
-## What's Here
-Skills that run *before* and *alongside* your coding sessions — not after things go wrong.
+## The Soul Document
 
-### Skills
-
-**[artful-making-holes](plugins/stage-manager/skills/artful-making-holes/)**
-Find every place in your PRD, MRD, architecture doc, or prompt where a coding tool will have to invent something because the spec didn't say. Quote the exact passage. Name what the tool will invent. Show the builder what they didn't know they were leaving open.
-
-**[artful-making-collapsed-options](plugins/stage-manager/skills/artful-making-collapsed-options/)**
-Find every place where the spec or prototype has already committed to a conventional solution — especially in the area where you're trying to do something genuinely different. Reopen those decisions before building starts. Wrap coding work in a process that proves the breakthrough before filling in everything else.
-
-### Shared References
-
-**[invention-zones.md](plugins/stage-manager/shared/references/invention-zones.md)**
-12 architectural zones where coding tools make invisible decisions — API design, auth, data persistence, DevOps, AI systems, feature delivery, and more. Each zone maps invisible decisions, default patterns, and closing questions.
-
-**[tool-selection-zones.md](plugins/stage-manager/shared/references/tool-selection-zones.md)**
-11 tool categories where Claude reaches for a default without asking — analytics, payments, search, queues, feature flags, and more. Real alternatives with honest tradeoffs, lock-in risks, and the question that keeps options open longest.
-
-**[breakthrough-dimensions.md](plugins/stage-manager/shared/references/breakthrough-dimensions.md)**
-10 dimensions a vibe coder might be pushing on — user experience, performance, cost, reliability, intelligence, accessibility, integration, scalability, privacy, and community. Each dimension maps what 10x better looks like, how options typically collapse, and the proof that matters before building the whole thing.
+`SOUL.md` at the root of this repo is the animating idea behind Stage Manager — the mantra, the daily practice, the vision, and what this work is in service of. Read it before reading the skills. It's the context everything else runs through.
 
 ---
 
-## The Philosophy
+## Using These Skills
 
-Most vibe coders lose agency when AI tools collapse option space too fast. These skills expand options before converging — guided by future intent and artful making practice.
+**With Claude or any AI assistant**
 
-This is Conway's Law for a single person: the quality of presence you bring to each increment shapes the shape of what emerges. Not just the code — the decisions, the architecture, the soul of the thing you're building.
+Paste a skill's contents into your system prompt or at the top of a conversation. Then describe what you're working on. The skill will shape how the AI responds to you.
 
-The goal isn't speed. It's **deliberate unfolding** — staging the ascent, not the spiral down. Moving above the line with responsibility, toward the place where you can let the work flow through you.
+**With Claude Code, Cursor, or Replit**
 
-Two lenses are live. More coming:
-- **Risk Sequence** — order your build to surface the riskiest assumptions first
-- **Chunking** — break work into flow-cycle-sized pieces a coding tool can execute cleanly
+Reference a skill file in your project's instructions or rules file. The coding tool will load it as context for your session.
 
----
+**As a standalone practice**
 
-## Want the Full Sequencing Experience?
-
-These skills are the on-ramp. [Stage Manager](https://stage-manager.ai) is the full practice — a lightweight scaffolding tool that helps you sequence your work by story, maintain plot and trajectory across a build, and keep the soul of your design intact from first spark to shipped increment.
-
-Start with the skills. Feel what deliberate unfolding feels like. Then bring it to your team.
+Read a skill before starting work. Use it as a checklist or reflection guide. The questions are useful even without an AI.
 
 ---
 
-## Contributing
-Found a pattern these skills miss? Built a better version for a specific document type?
+## What's Coming
 
-Fork, improve, submit a PR. The skill library grows from the community.
-
-**MIT License** — fork it, improve it, use it.
+- Shared references: `invention-zones.md`, `tool-selection-zones.md`, `breakthrough-dimensions.md`
+- Card creation skills: Intention Cards, Story Cards, Script Cards
+- Wisdom packs — user-owned domain context that travels across tools
+- Stage Manager — the full practice built on this foundation
 
 ---
 
-Made with care by [Manifest AI](https://github.com/Mnfst-AI)
+## Made by Manifest AI
+
+These skills are free and open. They are the first taste of deliberate unfolding — available to any builder, right now.
+
+Start here. Feel what it's like to expand options before converging. Then come to Stage Manager for the full practice.
+
+*For the builders who want to lead.*
+
+→ [manifest.ai](https://manifest.ai) · [Stage Manager Skills](https://github.com/Mnfst-AI/Stage_Manager_Skills)
