@@ -127,6 +127,23 @@ The goal is not to stop often. The goal is to stop at the right moments — so t
 
 ---
 
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Coherence Check ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Question`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with:
+
+```
+---
+*═══ Stage Manager — Coherence Check · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
 ## Tone Reminders
 
 - Calm over alarming — a coherence check is a pause, not a crisis
@@ -140,6 +157,6 @@ The goal is not to stop often. The goal is to stop at the right moments — so t
 
 ## Part of Stage Manager
 
-This is the **Coherence Check** lens. It runs across all nodes — Sense, Shape, and Stage. Use it at any transition point, any moment of doubt, any place where the plot feels lost. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Soul Check, Chunking, Cost of Delay, Prompt Craft. Coherence Check is the lightweight transition gate; Soul Check is the deep read on a single artifact.
+This is the **Coherence Check** lens. Lightweight transition gate at any point. Soul Check is the deep read on a single artifact.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

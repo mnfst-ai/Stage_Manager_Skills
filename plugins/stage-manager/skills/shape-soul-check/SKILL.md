@@ -136,6 +136,29 @@ The question should be answerable in one sentence. If it can't be answered in on
 
 ---
 
+### Footer
+
+End every analysis with:
+
+```
+---
+*═══ Stage Manager — Soul Check · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Soul Check ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Question`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with the branded footer above
+
+---
+
 ## Tone Reminders
 
 - Reverent — the original idea matters, even when the document has drifted from it
@@ -148,6 +171,6 @@ The question should be answerable in one sentence. If it can't be answered in on
 
 ## Part of Stage Manager
 
-This is the **Soul Check** lens. It's the most important question in the suite — everything else serves it. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Chunking, Cost of Delay, Prompt Craft, Coherence Check. Soul Check is a deep read on a single artifact; Coherence Check is the lightweight transition gate between work phases.
+This is the **Soul Check** lens. The most important question in the suite — everything else serves it. Soul Check is a deep read on a single artifact; Coherence Check is the lightweight transition gate.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

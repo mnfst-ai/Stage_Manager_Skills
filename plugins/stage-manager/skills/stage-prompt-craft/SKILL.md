@@ -99,7 +99,15 @@ GUARDRAILS:
 
 ### What This Prompt Will Invent
 
-Even a good prompt leaves gaps. Name one or two places where the tool will still have to make a judgment call — and flag whether that's acceptable or whether the prompt needs to be tightened.
+Even a good prompt leaves gaps. Name one or two places where the tool will still have to make a judgment call.
+
+Score each invention:
+
+- **P1** — Will directly conflict with intent. Tighten the prompt before sending.
+- **P2** — The default will be tolerable but not ideal. Note it.
+- **P3** — Harmless. Let the tool decide.
+
+Flag whether each is acceptable or whether the prompt needs to be tightened.
 
 This is not a reason to make the prompt longer. It is a reason to be conscious about what's being handed off.
 
@@ -134,6 +142,23 @@ Don't let a partial result carry forward. Each chunk must close cleanly before t
 
 ---
 
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Prompt Craft ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Tighten`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with:
+
+```
+---
+*═══ Stage Manager — Prompt Craft · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
 ## Tone Reminders
 
 - The goal is minimum specification, not maximum specification — don't make prompts longer than they need to be
@@ -146,6 +171,6 @@ Don't let a partial result carry forward. Each chunk must close cleanly before t
 
 ## Part of Stage Manager
 
-This is the **Prompt Craft** lens. It takes chunked work and turns it into clean handoffs to coding tools. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Soul Check, Chunking, Cost of Delay, Coherence Check.
+This is the **Prompt Craft** lens. It takes chunked work and turns it into clean handoffs to coding tools.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

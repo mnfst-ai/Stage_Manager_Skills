@@ -85,9 +85,15 @@ Not a list — one clear statement of the central bet.
 
 Present 4-6 assumptions ordered by risk — highest-cost-if-wrong first.
 
+Score each assumption:
+
+- **P1** — Load-bearing. If wrong, most downstream work is irrelevant.
+- **P2** — Significant but survivable. Being wrong costs time, not the project.
+- **P3** — Low-cost-if-wrong. Test when convenient, not urgently.
+
 For each:
 
-**[Short name]**
+**[Short name]** — **Priority: P1/P2/P3**
 
 > *[Quote the exact passage where this assumption lives in the document]*
 
@@ -147,6 +153,29 @@ This is not generic advice. It is specific to this document and this moment.
 
 ---
 
+### Footer
+
+End every analysis with:
+
+```
+---
+*═══ Stage Manager — Risk Sequence · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Risk Sequence ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Experiment`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with the branded footer above
+
+---
+
 ## Tone Reminders
 
 - Quote the actual text when naming assumptions — never paraphrase when you can quote
@@ -159,6 +188,6 @@ This is not generic advice. It is specific to this document and this moment.
 
 ## Part of Stage Manager
 
-This is the **Risk Sequence** lens. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Collapsed Options, Soul Check, Chunking, Cost of Delay, Prompt Craft, Coherence Check. Risk Sequence retires load-bearing assumptions before building; once assumptions are confirmed, use Cost of Delay to sequence the confirmed work.
+This is the **Risk Sequence** lens. Other lenses in the suite: Find the Holes, Collapsed Options, Soul Check, Shape-to-Stage Gate, Chunking, Cost of Delay, Prompt Craft, Output Review, Coherence Check.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

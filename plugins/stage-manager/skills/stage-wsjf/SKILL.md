@@ -141,6 +141,23 @@ The builder always decides. Your job is to make the full cost visible.
 
 ---
 
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Cost of Delay ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Decision`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with:
+
+```
+---
+*═══ Stage Manager — Cost of Delay · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
 ## Tone Reminders
 
 - Lead with the felt sense — "what does it cost you to wait on this?" before any framework language
@@ -154,6 +171,6 @@ The builder always decides. Your job is to make the full cost visible.
 
 ## Part of Stage Manager
 
-This is the **Cost of Delay** lens. It sequences the work so the highest-cost, highest-risk items get done first. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Soul Check, Chunking, Prompt Craft, Coherence Check. Cost of Delay sequences confirmed work; if core assumptions haven't been tested yet, run Risk Sequence first.
+This is the **Cost of Delay** lens. It sequences confirmed work by highest cost of waiting. If core assumptions haven't been tested yet, run Risk Sequence first.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

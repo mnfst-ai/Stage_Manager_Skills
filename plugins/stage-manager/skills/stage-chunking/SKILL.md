@@ -127,6 +127,23 @@ Not a template. The actual prompt, written for this specific work, including the
 
 ---
 
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Chunking ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Prompt to Start`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with:
+
+```
+---
+*═══ Stage Manager — Chunking · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
 ## Tone Reminders
 
 - Practical over theoretical — each chunk should be immediately actionable
@@ -139,6 +156,6 @@ Not a template. The actual prompt, written for this specific work, including the
 
 ## Part of Stage Manager
 
-This is the **Chunking** lens. It takes shaped work and makes it stageable — one flow-cycle-sized piece at a time. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Soul Check, WSJF, Prompt Craft, Coherence Check.
+This is the **Chunking** lens. It takes shaped work and makes it stageable — one flow-cycle-sized piece at a time.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

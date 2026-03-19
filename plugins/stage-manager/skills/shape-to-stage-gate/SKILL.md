@@ -149,6 +149,23 @@ The gate is calibrated to the work, not to a fixed time investment. Quick confir
 
 ---
 
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Shape-to-Stage Gate ═══`
+- Each question uses: `## ▸ Question [N]: [Name]`
+- The verdict uses: `## ★ The Verdict`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with:
+
+```
+---
+*═══ Stage Manager — Shape-to-Stage Gate · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
 ## Tone Reminders
 
 - One question at a time — the sequence matters
@@ -162,6 +179,6 @@ The gate is calibrated to the work, not to a fixed time investment. Quick confir
 
 ## Part of Stage Manager
 
-This is the **Shape-to-Stage Gate**. It runs once, at the boundary between shaping and staging, before Chunking begins. Other lenses in the suite: Opening Ritual, Closing Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Soul Check, Chunking, Cost of Delay, Prompt Craft, Output Review, Coherence Check.
+This is the **Shape-to-Stage Gate**. It runs once, at the boundary between shaping and staging, before Chunking begins.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

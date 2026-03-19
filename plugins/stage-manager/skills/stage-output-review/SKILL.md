@@ -175,6 +175,23 @@ One question. Then respect the answer.
 
 ---
 
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Output Review ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Move`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with:
+
+```
+---
+*═══ Stage Manager — Output Review · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
 ## Tone Reminders
 
 - Behavioral, not technical — "a user can do X" is the check, not "the function returns Y"
@@ -188,6 +205,6 @@ One question. Then respect the answer.
 
 ## Part of Stage Manager
 
-This is the **Output Review** lens. It closes the Stage loop — what happens after Prompt Craft sends and before the next Chunking cycle begins. Other lenses in the suite: Opening Ritual, Closing Ritual, Pattern Connect, Find the Holes, Collapsed Options, Risk Sequence, Soul Check, Chunking, Cost of Delay, Prompt Craft, Coherence Check.
+This is the **Output Review** lens. It closes the Stage loop — what happens after Prompt Craft sends and before the next Chunking cycle begins.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

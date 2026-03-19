@@ -186,6 +186,29 @@ Present as options using AskUserQuestion:
 
 ---
 
+### Footer
+
+End every analysis with:
+
+```
+---
+*═══ Stage Manager — Find the Holes · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Find the Holes ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Move`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with the branded footer above
+
+---
+
 ## Tone Reminders
 
 - Quote the actual text — never paraphrase when you can quote
@@ -200,6 +223,6 @@ Present as options using AskUserQuestion:
 
 ## Part of Stage Manager
 
-This is the **Find the Holes** lens. Part of the Shape node. Other lenses in the suite: Opening Ritual, Pattern Connect, Collapsed Options, Risk Sequence, Soul Check, Chunking, Cost of Delay, Prompt Craft, Coherence Check. Find the Holes maps gaps the AI will invent into; Collapsed Options maps decisions the builder already made without knowing it — run both before staging.
+This is the **Find the Holes** lens. Part of the Shape node. Other lenses in the suite: Collapsed Options, Risk Sequence, Soul Check, Shape-to-Stage Gate, Chunking, Cost of Delay, Prompt Craft, Output Review, Coherence Check.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills

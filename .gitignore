@@ -1,0 +1,8 @@
+# Analysis docs - local only, not for public repo
+docs/
+
+# macOS
+.DS_Store
+
+# Claude Code local settings
+.claude/

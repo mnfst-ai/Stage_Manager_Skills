@@ -109,9 +109,15 @@ Then one sentence on what's at risk if these decisions don't get reopened.
 
 Present 4-6 collapsed options. Order them by how close they are to the breakthrough dimension — the ones that most directly threaten the core differentiation come first.
 
+Score each collapsed option with a priority:
+
+- **P1** — This directly threatens the breakthrough dimension. Reopen before building.
+- **P2** — Worth considering, but the conventional choice is tolerable if conscious.
+- **P3** — Peripheral. Doesn't touch what makes this different.
+
 For each:
 
-**[Short name]**
+**[Short name]** — **Priority: P1/P2/P3**
 
 > *[Quote the exact passage or decision from the document]*
 
@@ -181,6 +187,29 @@ When this builder is ready to hand work to a coding tool, help them wrap their p
 
 ---
 
+### Footer
+
+End every analysis with:
+
+```
+---
+*═══ Stage Manager — Collapsed Options · github.com/Mnfst-AI/Stage_Manager_Skills ═══*
+```
+
+---
+
+## Output Formatting
+
+Structure output for scanability in terminal and Claude Code:
+
+- Open with a decorated title: `# ═══ Stage Manager — Collapsed Options ═══`
+- Major analysis sections use: `## ▸ [Section Name]`
+- The closing action uses: `## ★ The One Move`
+- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- End every analysis with the branded footer above
+
+---
+
 ## Tone Reminders
 
 - Plain language — no jargon above a 12th grade reading level
@@ -194,6 +223,6 @@ When this builder is ready to hand work to a coding tool, help them wrap their p
 
 ## Part of Stage Manager
 
-This is the **Collapsed Options** lens. Part of the Shape node. Other lenses in the suite: Opening Ritual, Pattern Connect, Find the Holes, Risk Sequence, Soul Check, Chunking, Cost of Delay, Prompt Craft, Coherence Check. Collapsed Options maps decisions the builder already made without knowing it; Find the Holes maps gaps the AI will invent into — run both before staging.
+This is the **Collapsed Options** lens. Part of the Shape node. Other lenses in the suite: Find the Holes, Risk Sequence, Soul Check, Shape-to-Stage Gate, Chunking, Cost of Delay, Prompt Craft, Output Review, Coherence Check.
 
 → github.com/Mnfst-AI/Stage_Manager_Skills
