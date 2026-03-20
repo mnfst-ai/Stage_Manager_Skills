@@ -24,7 +24,9 @@ This symlinks all skills to `~/.claude/skills/` and makes them available as `/sl
 
 ### Option B: Stage Manager + Enhanced Compound Engineering
 
-Use this if you already have [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) installed and want Stage Manager gates woven into every phase of the CE pipeline.
+Use this if you want the full stack — Stage Manager skills plus the CE pipeline with Stage Manager gates woven into every phase.
+
+**Works whether or not you already have Compound Engineering installed.** If CE is present, it backs up your originals. If CE is not present, it installs stock CE from [Every's repo](https://github.com/EveryInc/compound-engineering-plugin) first, then overlays the enhanced versions.
 
 ```bash
 git clone -b enhanced-cli-skills https://github.com/Mnfst-AI/Stage_Manager_Skills.git
@@ -32,10 +34,10 @@ cd Stage_Manager_Skills
 bash install-enhanced-ce.sh
 ```
 
-The enhanced installer will:
-- Detect your existing CE installation at `~/.claude/commands/ce/`
-- Back up your original CE commands to `~/.claude/commands/ce.backup/`
-- Install enhanced CE commands with Stage Manager gates at every phase
+The installer will:
+- Install Compound Engineering from [EveryInc/compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) if not already present
+- Back up stock CE commands to `~/.claude/commands/ce.backup/`
+- Overlay enhanced CE commands with Stage Manager gates at every phase
 - Symlink all 13 Stage Manager skills
 - Link shared reference files
 
