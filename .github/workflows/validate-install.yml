@@ -161,14 +161,23 @@ jobs:
       - name: Dry-run install-enhanced-ce.sh
         run: |
           FAKE_HOME=$(mktemp -d)
+          # Pre-seed stock CE commands so the installer doesn't clone the external repo
+          CE_DIR="$FAKE_HOME/.claude/commands/ce"
+          mkdir -p "$CE_DIR"
+          for f in brainstorm.md compound.md plan.md review.md work.md; do
+            echo "# Stub for CI dry-run" > "$CE_DIR/$f"
+          done
           HOME="$FAKE_HOME" bash install-enhanced-ce.sh
           echo ""
           echo "✓  install-enhanced-ce.sh — no fatal errors"
 
       - name: Dry-run install-superpowers.sh
         run: |
-          # Pipe "y" to handle the interactive Superpowers-not-found prompt
           FAKE_HOME=$(mktemp -d)
+          # Pre-seed a Superpowers CLAUDE.md so the installer doesn't prompt
+          SP_DIR="$FAKE_HOME/.claude"
+          mkdir -p "$SP_DIR"
+          echo "# Stub" > "$SP_DIR/CLAUDE.md"
           echo "y" | HOME="$FAKE_HOME" bash install-superpowers.sh
           echo ""
           echo "✓  install-superpowers.sh — no fatal errors"
