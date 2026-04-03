@@ -57,63 +57,31 @@ If running inside `ce:work`, the plan file and the current git diff are both ava
 
 ## Output Structure
 
-### Opening: What Was Specified vs. What Was Built
+### Opening
 
-Two or three sentences. Summary of the scope — what the spec asked for and what the output delivered. Note whether the output is larger, smaller, or different in shape than what was asked for.
+One sentence: how many decisions were specified vs. invented, and where the inventions cluster.
 
 ---
 
 ### The Invisible Decisions
 
-Present each decision the coding tool made that wasn't in the specification. Group by category:
+Present findings as a prioritized list. Each item is one line: what the tool invented and the consequence.
 
-For each:
+- **P1** 🔴 — [Decision]: tool chose [X], spec said [Y]. *Conflicts with spec — [consequence].*
+- **P2** ⚠️ — [Decision]: tool chose [X], spec was silent. *Builder should decide — [consequence if left].*
+- **P3** ✅ — [Decision]: tool chose [X]. *Reasonable default — no action needed.*
 
-**[Decision name]** — **Category: [Architecture / Data Model / Library Choice / Error Handling / Security / Performance / UX Behavior / Naming]**
-
-> *Spec said:* [What the spec specified, or "Nothing — this wasn't mentioned"]
->
-> *Tool chose:* [What the coding tool actually implemented]
-
-**Why it probably did this:**
-One sentence. The tool's likely reasoning — what default pattern or convention drove this choice.
-
-**Does this matter?**
-One sentence. Is this a reasonable default the builder would likely agree with, or does it touch something the builder should have decided?
-
-**Verdict:** ✅ Reasonable default | ⚠️ Builder should decide | 🔴 Conflicts with spec
+List 🔴 and ⚠️ items first. ✅ items listed for transparency.
 
 ---
 
-### The Scorecard
+### Close
 
-| Category | Specified | Invented | Conflicts |
-|----------|-----------|----------|-----------|
-| Architecture | X | X | X |
-| Data Model | X | X | X |
-| Libraries | X | X | X |
-| Error Handling | X | X | X |
-| Security | X | X | X |
-| Other | X | X | X |
-| **Total** | **X** | **X** | **X** |
+**Address them? Yes / Pick one / Accept all**
 
----
-
-### What Needs Your Attention
-
-List only the ⚠️ and 🔴 items — the decisions the builder should explicitly accept or override. Present as a numbered list with the question that closes each one.
-
----
-
-### What's Fine
-
-One paragraph acknowledging the ✅ reasonable defaults. The builder doesn't need to review these, but they're listed above for transparency.
-
----
-
-### The One Thing
-
-If there's one invented decision that matters most — one that touches the animating intent or could compound downstream — name it. One sentence. One question.
+- **Yes** — walk through 🔴 and ⚠️ items one at a time. For each: accept, override, or note as conscious tradeoff.
+- **Pick one** — the builder names which decision to address.
+- **Accept all** — acknowledge the tool's choices and move on.
 
 ---
 
@@ -130,7 +98,7 @@ If there's one invented decision that matters most — one that touches the anim
 
 - Open with: `# ═══ Stage Manager — Live Mirror ═══`
 - Major sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ★ The One Thing`
+- The closing action uses: `## ★ Close`
 - Between major sections: blank line + `---` + blank line
 - End with the branded footer
 

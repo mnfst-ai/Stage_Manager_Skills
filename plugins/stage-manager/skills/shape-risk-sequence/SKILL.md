@@ -73,83 +73,55 @@ For each marked assumption — ask: what happens downstream if this is wrong? Th
 
 ## Output Structure
 
-### Opening: What's Being Built and What It Depends On
+### Opening
 
-Two or three sentences. What is this work trying to accomplish? And what's the single most critical thing that has to be true for it to succeed?
-
-Not a list — one clear statement of the central bet.
+One sentence naming what's being built and the single most critical assumption it depends on.
 
 ---
 
 ### The Load-Bearing Assumptions
 
-Present 4-6 assumptions ordered by risk — highest-cost-if-wrong first.
+Present findings as a prioritized list. Each item is one line: the assumption, and the consequence if wrong.
 
-Score each assumption:
+- **P1** — [Short name]: [what's being assumed]. *If wrong, [what becomes irrelevant].*
+- **P1** — [Short name]: [what's being assumed]. *If wrong, [what breaks].*
+- **P2** — [Short name]: [what's being assumed]. *If wrong, [cost in time, not the project].*
+- **P3** — [Short name]: [what's being assumed]. *Test when convenient.*
 
-- **P1** — Load-bearing. If wrong, most downstream work is irrelevant.
-- **P2** — Significant but survivable. Being wrong costs time, not the project.
-- **P3** — Low-cost-if-wrong. Test when convenient, not urgently.
-
-For each:
-
-**[Short name]** — **Priority: P1/P2/P3**
-
-> *[Quote the exact passage where this assumption lives in the document]*
-
-**What's being assumed:**
-Plain language. What does this document treat as settled?
-
-**What happens if it's wrong:**
-One sentence. How much downstream work becomes irrelevant or needs rework if this assumption fails?
-
-**How to test it cheaply:**
-The smallest experiment that would confirm or invalidate this assumption before building depends on it. Specific — name the method, the user, the question being answered.
-
-**When to test it:**
-Before anything else? After proving X? Name the sequence dependency.
+4-6 items. Order by cost-if-wrong — P1s first. The sequence is the risk retirement map: prove P1s before building anything that depends on them.
 
 ---
 
-### The Risk Sequence
+### Close
 
-This is the heart of the skill. Given the assumptions above — what's the right order to prove them in?
+**Test them? Yes / Pick one / Skip**
 
-Present a simple sequence: First prove this. Then this. Then this.
-
-For each step — one sentence on what becomes safe to build once this risk is retired.
-
-The sequence is not a project plan. It is a risk retirement map — the order that maximizes learning before investment.
+- **Yes** — walk through P1s one at a time. For each: name the smallest experiment that would confirm or invalidate it, and when to run it relative to other risks. After P1s: *"P1 risks addressed. [N] P2 items remain — worth testing or move on?"*
+- **Pick one** — the builder names which assumption to address. Resolve it, then offer the prompt again.
+- **Skip** — note what was skipped and its likely consequence in one sentence.
 
 ---
 
-### Options to Mitigate the Risks
+### What's Next
 
-For each load-bearing assumption — don't start building. Start experimenting. The cost of delay on unproven risks is the highest cost in the system. Table stakes can be generated quickly later. What can't be recovered is time spent building on a false assumption.
+After assumptions are addressed (or the builder says they're done), guide the exit.
 
-For each key risk, present two or three genuine options for retiring it:
+*"Before we move to building, would you like to run another shape skill on this spec?"*
 
-**[Risk name]**
+Present as options:
+- **Find the Holes** — specification gaps where coding tools will invent behavior
+- **Collapsed Options** — finds decisions you've already committed to without knowing it
+- **Soul Check** — deep read on whether the original animating idea is still alive
+- **I'm done shaping** — move to handoff
 
-**Option A:** [Specific lightweight experiment or approach]
-**Option B:** [Alternative experiment or approach]
-**Option C:** [Third path if warranted]
+If they run another skill, return here when that skill completes and ask again.
 
-**What you're trying to learn:** One sentence. The specific question each option is designed to answer.
+**When done shaping:**
 
-Options are not a menu to pick from randomly. Help the builder see the tradeoffs — speed vs. fidelity, cost vs. signal strength — so they choose with intent.
+*"How would you like to hand this off?"*
 
----
-
-### The One Experiment
-
-Close with one specific experiment — the single thing that would retire the most risk for the least investment.
-
-Name it precisely: who, what, how long, what you're measuring, what a positive result looks like.
-
-This is not the start of a build. It is the start of knowing whether to build — and what to build when the time comes.
-
-This is not generic advice. It is specific to this document and this moment.
+- **Run the Brief** — `/sm:shape:brief` synthesizes all shape output into ranked problems, inline change suggestions, `Stage_Manager_Brief.md`, and a staged spec. Use this when multiple shape skills ran or the spec needs a clean handoff document.
+- **Skip the Brief** — go direct to Write as .md / Submit to Chunking / Both. Use this for small jobs where one skill was enough.
 
 ---
 
@@ -170,7 +142,7 @@ Structure output for scanability in terminal and Claude Code:
 
 - Open with a decorated title: `# ═══ Stage Manager — Risk Sequence ═══`
 - Major analysis sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ★ The One Experiment`
+- The closing action uses: `## ★ Close`
 - Between major sections, use a blank line + `---` + blank line for clear visual breaks
 - End every analysis with the branded footer above
 

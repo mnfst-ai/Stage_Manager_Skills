@@ -75,45 +75,31 @@ These are the questions underneath every coherence check. You don't always ask t
 
 ## Output Structure
 
-### What's Still True
+### Opening
 
-Start here. Before naming what's off — name what's solid. Two or three things that are still coherent, still aligned, still worth building on.
-
-These are the anchors. The builder needs to know what's stable before they can deal with what isn't.
+One sentence: is the work still coherent, and if not, where did it shift?
 
 ---
 
-### What's Shifted
+### The Findings
 
-Name what's no longer coherent — if anything. Be specific. Quote the artifact or reference the moment where the drift is visible.
+If coherent: *"Coherent. Original intent alive. The next step is right. Keep going."*
 
-Not a list of everything that could be better. The one or two things that, if left unnamed, will compound into bigger problems downstream.
+If drift exists, present as a prioritized list:
 
-If nothing has shifted — say so directly. *"This is coherent. The original intent is alive. The next step is right. Keep going."* That's a valid and useful result.
+- **P1** — [What shifted]: [how it affects original intent]. *Unnamed, [consequence].*
+- **P2** — [What shifted]: [noticeable but manageable]. *Acceptable if conscious.*
 
----
-
-### The Decision Point
-
-If there is drift — name the decision the builder faces.
-
-Not a recommendation. A clear statement of what they're choosing between:
-
-*"You can continue as planned and accept that [X] has shifted from the original intent — that may be fine. Or you can pause and realign before the next chunk. Here's what realignment would take..."*
-
-The builder decides. Your job is to make the choice visible.
+Name 1-2 things still solid as anchors.
 
 ---
 
-### The One Question
+### Close
 
-Close with one question — the thing the builder needs to answer before continuing.
+**Realign? Yes / Continue as-is**
 
-If everything is coherent: *"Ready to move forward?"*
-
-If there's drift: the specific question that, if answered, resolves it.
-
-One question. Not a list.
+- **Yes** — name what needs to shift and ask the question that resolves it.
+- **Continue as-is** — note what was accepted as a conscious choice.
 
 ---
 
@@ -141,7 +127,7 @@ Structure output for scanability in terminal and Claude Code:
 
 - Open with a decorated title: `# ═══ Stage Manager — Coherence Check ═══`
 - Major analysis sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ★ The One Question`
+- The closing action uses: `## ★ Close`
 - Between major sections, use a blank line + `---` + blank line for clear visual breaks
 - End every analysis with:
 

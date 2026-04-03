@@ -1,6 +1,6 @@
 # Stage Manager — Artful Making Skill Library
 
-A collection of 11 skills for vibe coders who use agentic coding tools (Claude Code, Cursor, Replit). Skills are organized across the Shape-to-Stage flow cycle. The mirror never goes dark.
+A collection of 16 skills for vibe coders who use agentic coding tools (Claude Code, Cursor, Replit). Skills are organized across the Shape-to-Stage flow cycle, including premise validation before building. The mirror never goes dark.
 
 ## Available Slash Commands
 
@@ -20,8 +20,15 @@ A collection of 11 skills for vibe coders who use agentic coding tools (Claude C
 - `/sm:stage:live-mirror` — Compare plan vs. code output per-session, surface what the tool invented
 - `/sm:stage:decision-capture` — Full decisions-made manifest after a build, feeds forward into learning
 
+### Validate (before you build, prove the premise)
+- `/sm:yagni` — Gate: challenge the premise before a single line of code
+- `/sm:invalidate-prep` — Surface and rank assumptions, identify personas, generate problem statements
+- `/sm:invalidate-interview` — Generate a live interview script using negative framing to kill assumptions
+- `/sm:invalidate-score` — Score each assumption as validated, invalidated, or still open
+
 ### Any Node
 - `/sm:coherence-check` — Lightweight 2-minute gate at any transition point mid-build. For the shape/stage boundary, use `/sm:shape:brief` instead.
+- `/sm:stage-manage` — Session opener and orchestrator. Watches for signals and suggests skills as they emerge.
 
 ## The Shape Brief Flow
 
@@ -37,13 +44,9 @@ Then choose your handoff path:
 - **Brief + original spec** — when the full source context matters
 - **Brief + Staged spec** — when you walked through fixes and want the next tool building from the resolved version
 
-## Compound Engineering Integration
+## Integration
 
-Modified CE commands that integrate Stage Manager at every phase live in `plugins/compound-engineering/commands/ce/`. Stage Manager gates are woven into brainstorm, plan, work, review, and compound — with Shape Brief as the canonical pre-planning handoff.
-
-## Superpowers Integration
-
-Stage Manager shapes your spec before Superpowers executes it. Run shape skills, run `/sm:shape:brief`, then hand the two output documents to Superpowers as the starting context. Superpowers handles all planning and execution interaction from there.
+Stage Manager works alongside any coding workflow — Compound Engineering, Superpowers, or standalone. Start with `/sm:stage-manage` to open a session, or invoke any skill directly. No patching required.
 
 ## Shared References
 

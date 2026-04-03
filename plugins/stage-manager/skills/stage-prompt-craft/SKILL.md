@@ -99,33 +99,20 @@ GUARDRAILS:
 
 ### What This Prompt Will Invent
 
-Even a good prompt leaves gaps. Name one or two places where the tool will still have to make a judgment call.
+Present the gaps as a prioritized list. Each item is one line: what the tool will decide and the consequence.
 
-Score each invention:
-
-- **P1** — Will directly conflict with intent. Tighten the prompt before sending.
-- **P2** — The default will be tolerable but not ideal. Note it.
-- **P3** — Harmless. Let the tool decide.
-
-Flag whether each is acceptable or whether the prompt needs to be tightened.
-
-This is not a reason to make the prompt longer. It is a reason to be conscious about what's being handed off.
+- **P1** — [Gap]: tool will [specific invention]. *Conflicts with intent — tighten before sending.*
+- **P2** — [Gap]: tool will [specific invention]. *Default tolerable but not ideal.*
+- **P3** — [Gap]: tool will [specific invention]. *Harmless — let the tool decide.*
 
 ---
 
-### If This Prompt Goes Wrong
+### Close
 
-One sentence naming the most likely failure mode — what the tool will do if it misreads the intent. And one specific guardrail that would prevent it.
+**Tighten it? Yes / Send as-is**
 
-This is the pre-mortem. Name it before sending, not after.
-
----
-
-### The One Tighten
-
-One specific thing the builder could add or clarify to make this prompt more precise — if they want to invest the extra thirty seconds.
-
-Not required. Sometimes the prompt is good enough. But if there's one move that would meaningfully reduce invention risk, name it.
+- **Yes** — for each P1 gap, suggest a specific addition or clarification to the prompt. Apply accepted tightens.
+- **Send as-is** — note the gaps as conscious tradeoffs. The builder knows what the tool will invent.
 
 ---
 
@@ -148,7 +135,7 @@ Structure output for scanability in terminal and Claude Code:
 
 - Open with a decorated title: `# ═══ Stage Manager — Prompt Craft ═══`
 - Major analysis sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ★ The One Tighten`
+- The closing action uses: `## ★ Close`
 - Between major sections, use a blank line + `---` + blank line for clear visual breaks
 - End every analysis with:
 
