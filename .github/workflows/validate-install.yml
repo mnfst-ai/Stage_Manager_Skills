@@ -57,9 +57,9 @@ jobs:
           echo ""
           echo "✓  All branch references valid"
 
-  # ── Job 2: File path integrity ────────────────────────────────────────────
-  check-file-paths:
-    name: Check file paths
+  # ── Job 2: Skill consistency ──────────────────────────────────────────────
+  check-consistency:
+    name: Check skill consistency
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -68,83 +68,130 @@ jobs:
         run: |
           echo "── plugin.json ──"
           python3 -m json.tool .claude-plugin/plugin.json > /dev/null && echo "✓  Valid JSON"
+          python3 -m json.tool plugins/stage-manager/.claude-plugin/plugin.json > /dev/null && echo "✓  Valid JSON (stage-manager)"
 
-          python3 - <<'PYEOF'
-          import json, sys, os
-
-          with open(".claude-plugin/plugin.json") as f:
-              data = json.load(f)
-
-          errors = 0
-          for path in data.get("skills", []):
-              if not os.path.isdir(path):
-                  print(f"::error file=.claude-plugin/plugin.json::Skill directory not found: {path}")
-                  errors += 1
-                  continue
-              skill_md = os.path.join(path, "SKILL.md")
-              if not os.path.isfile(skill_md):
-                  print(f"::error file=.claude-plugin/plugin.json::SKILL.md missing in: {path}")
-                  errors += 1
-              else:
-                  print(f"✓  {skill_md}")
-
-          sys.exit(errors)
-          PYEOF
-
-      - name: Check paths referenced in install scripts
+      - name: Check skill count and presence across all files
         run: |
           ERRORS=0
 
-          check() {
-            local path="$1"
-            local context="$2"
-            if [ ! -e "$path" ]; then
-              echo "::error::Missing path: '$path'  (referenced in $context)"
-              ERRORS=$((ERRORS + 1))
-            else
-              echo "✓  $path  ($context)"
-            fi
-          }
-
-          echo "── Common to all installers ──"
-          check ".claude-plugin/plugin.json"        "all install scripts"
-          check "plugins/stage-manager/skills"      "all install scripts"
-          check "plugins/shared/references"         "all install scripts"
-
+          # ── Source of truth: skill directories on disk ──
+          SKILLS_ON_DISK=$(find plugins/stage-manager/skills -name SKILL.md -maxdepth 2 \
+            | sed 's|plugins/stage-manager/skills/||; s|/SKILL.md||' | sort)
+          DISK_COUNT=$(echo "$SKILLS_ON_DISK" | wc -l | tr -d ' ')
+          echo "── Skills on disk: $DISK_COUNT ──"
+          echo "$SKILLS_ON_DISK"
           echo ""
-          echo "── Stage Manager skills (install.sh) ──"
-          for skill in \
-            shape-find-holes \
-            shape-collapsed-options \
-            shape-risk-sequence \
-            shape-soul-check \
-            shape-brief \
-            shape-to-stage-gate \
-            stage-chunking \
-            stage-prompt-craft \
-            stage-live-mirror \
-            stage-decision-capture \
-            coherence-check \
-            yagni \
-            invalidate-prep \
-            invalidate-interview \
-            invalidate-score \
-            stage-manage; do
-            check "plugins/stage-manager/skills/$skill"          "install scripts"
-            check "plugins/stage-manager/skills/$skill/SKILL.md" "install scripts"
-          done
 
-          if [ "$ERRORS" -gt 0 ]; then
-            echo ""
-            echo "❌ $ERRORS path(s) referenced in install scripts do not exist in the repo"
-            exit 1
+          # ── Check install.sh SKILL_DIRS array ──
+          echo "── install.sh ──"
+          INSTALL_SKILLS=$(sed -n '/^SKILL_DIRS=(/,/^)/p' install.sh \
+            | grep -v 'SKILL_DIRS' | tr -d ' )' | grep -v '^$' | sort)
+          INSTALL_COUNT=$(echo "$INSTALL_SKILLS" | wc -l | tr -d ' ')
+
+          MISSING_FROM_INSTALL=$(comm -23 <(echo "$SKILLS_ON_DISK") <(echo "$INSTALL_SKILLS"))
+          EXTRA_IN_INSTALL=$(comm -13 <(echo "$SKILLS_ON_DISK") <(echo "$INSTALL_SKILLS"))
+
+          if [ -n "$MISSING_FROM_INSTALL" ]; then
+            echo "::error::Skills on disk but missing from install.sh SKILL_DIRS:"
+            echo "$MISSING_FROM_INSTALL" | while read -r s; do echo "  - $s"; done
+            ERRORS=$((ERRORS + 1))
+          fi
+          if [ -n "$EXTRA_IN_INSTALL" ]; then
+            echo "::error::Skills in install.sh SKILL_DIRS but not on disk:"
+            echo "$EXTRA_IN_INSTALL" | while read -r s; do echo "  - $s"; done
+            ERRORS=$((ERRORS + 1))
+          fi
+          if [ -z "$MISSING_FROM_INSTALL" ] && [ -z "$EXTRA_IN_INSTALL" ]; then
+            echo "✓  install.sh matches disk ($INSTALL_COUNT skills)"
           fi
           echo ""
-          echo "✓  All referenced paths exist"
 
-  # ── Job 3: Install script dry-runs ────────────────────────────────────────
-  dry-run-installers:
-    name: Dry-run install scripts
+          # ── Check README.md mentions every skill ──
+          echo "── README.md ──"
+          README_MISSING=""
+          while read -r skill; do
+            if ! grep -q "$skill" README.md; then
+              README_MISSING="$README_MISSING $skill"
+            fi
+          done <<< "$SKILLS_ON_DISK"
+
+          if [ -n "$README_MISSING" ]; then
+            echo "::error::Skills on disk but not mentioned in README.md:"
+            for s in $README_MISSING; do echo "  - $s"; done
+            ERRORS=$((ERRORS + 1))
+          else
+            echo "✓  README.md mentions all $DISK_COUNT skills"
+          fi
+
+          # Check README skill count claim
+          README_COUNT=$(grep -oP '\b\d+\b(?= skills)' README.md | head -1 || true)
+          if [ -n "$README_COUNT" ] && [ "$README_COUNT" != "$DISK_COUNT" ]; then
+            echo "::error::README.md claims $README_COUNT skills but $DISK_COUNT exist on disk"
+            ERRORS=$((ERRORS + 1))
+          elif [ -n "$README_COUNT" ]; then
+            echo "✓  README.md count ($README_COUNT) matches disk"
+          fi
+          echo ""
+
+          # ── Check CLAUDE.md mentions every skill ──
+          # CLAUDE.md uses slash command names (/sm:shape:find-holes) not directory names (shape-find-holes)
+          # Directory "shape-find-holes" → grep for "shape:find-holes" or "shape-find-holes"
+          # Directory "stage-chunking" → grep for "stage:chunking" or "stage-chunking"
+          # Directory "shape-to-stage-gate" → grep for "shape:gate" or "shape-to-stage-gate"
+          echo "── CLAUDE.md ──"
+          CLAUDE_MISSING=""
+          while read -r skill; do
+            # Convert: replace first hyphen after shape/stage prefix with colon
+            slash_name=$(echo "$skill" | sed 's/^\(shape\)-/\1:/; s/^\(stage\)-/\1:/')
+            # Also check the SKILL.md frontmatter name field for aliases (e.g. shape-to-stage-gate → sm:shape:gate)
+            skill_md_name=$(grep -m1 '^name:' "plugins/stage-manager/skills/$skill/SKILL.md" 2>/dev/null \
+              | sed 's/^name: *//; s/^sm://' || true)
+            if ! grep -q "$skill" CLAUDE.md && ! grep -q "$slash_name" CLAUDE.md \
+               && { [ -z "$skill_md_name" ] || ! grep -q "$skill_md_name" CLAUDE.md; }; then
+              CLAUDE_MISSING="$CLAUDE_MISSING $skill"
+            fi
+          done <<< "$SKILLS_ON_DISK"
+
+          if [ -n "$CLAUDE_MISSING" ]; then
+            echo "::error::Skills on disk but not mentioned in CLAUDE.md:"
+            for s in $CLAUDE_MISSING; do echo "  - $s"; done
+            ERRORS=$((ERRORS + 1))
+          else
+            echo "✓  CLAUDE.md mentions all $DISK_COUNT skills"
+          fi
+
+          # Check CLAUDE.md skill count claim
+          CLAUDE_COUNT=$(grep -oP '\b\d+\b(?= skills)' CLAUDE.md | head -1 || true)
+          if [ -n "$CLAUDE_COUNT" ] && [ "$CLAUDE_COUNT" != "$DISK_COUNT" ]; then
+            echo "::error::CLAUDE.md claims $CLAUDE_COUNT skills but $DISK_COUNT exist on disk"
+            ERRORS=$((ERRORS + 1))
+          elif [ -n "$CLAUDE_COUNT" ]; then
+            echo "✓  CLAUDE.md count ($CLAUDE_COUNT) matches disk"
+          fi
+          echo ""
+
+          # ── Check plugin.json skill count claim ──
+          echo "── plugin.json ──"
+          PLUGIN_COUNT=$(grep -oP '\b\d+\b(?= skills)' plugins/stage-manager/.claude-plugin/plugin.json | head -1 || true)
+          if [ -n "$PLUGIN_COUNT" ] && [ "$PLUGIN_COUNT" != "$DISK_COUNT" ]; then
+            echo "::error::plugin.json claims $PLUGIN_COUNT skills but $DISK_COUNT exist on disk"
+            ERRORS=$((ERRORS + 1))
+          elif [ -n "$PLUGIN_COUNT" ]; then
+            echo "✓  plugin.json count ($PLUGIN_COUNT) matches disk"
+          fi
+          echo ""
+
+          # ── Summary ──
+          if [ "$ERRORS" -gt 0 ]; then
+            echo ""
+            echo "❌ $ERRORS consistency error(s) found"
+            exit 1
+          fi
+          echo "✓  All files consistent — $DISK_COUNT skills everywhere"
+
+  # ── Job 3: Install script dry-run ─────────────────────────────────────────
+  dry-run-installer:
+    name: Dry-run install script
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -156,15 +203,17 @@ jobs:
           echo ""
           echo "✓  install.sh — no fatal errors"
 
-      - name: Verify removed installers are gone
+      - name: Verify installed skill count
         run: |
-          ERRORS=0
-          for f in install-enhanced-ce.sh install-superpowers.sh; do
-            if [ -f "$f" ]; then
-              echo "::error::Removed installer still exists: $f"
-              ERRORS=$((ERRORS + 1))
-            else
-              echo "✓  $f correctly removed"
-            fi
-          done
-          [ "$ERRORS" -eq 0 ] || exit 1
+          FAKE_HOME=$(mktemp -d)
+          HOME="$FAKE_HOME" bash install.sh > /dev/null 2>&1
+
+          DISK_COUNT=$(find plugins/stage-manager/skills -name SKILL.md -maxdepth 2 | wc -l | tr -d ' ')
+          # Count symlinked skill directories (install.sh creates symlinks, not copies)
+          INSTALLED_COUNT=$(find "$FAKE_HOME/.claude/skills" -maxdepth 1 -type l | wc -l | tr -d ' ')
+
+          if [ "$INSTALLED_COUNT" != "$DISK_COUNT" ]; then
+            echo "::error::install.sh created $INSTALLED_COUNT symlinks but $DISK_COUNT skills exist in repo"
+            exit 1
+          fi
+          echo "✓  install.sh linked all $INSTALLED_COUNT skills"
