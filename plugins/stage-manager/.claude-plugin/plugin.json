@@ -1,7 +1,7 @@
 {
   "name": "stage-manager",
-  "version": "0.4.0",
-  "description": "Artful Making skills for vibe coders. 11 skills across the Shape-to-Stage flow cycle — shape your spec, brief it, stage it clean. The mirror never goes dark.",
+  "version": "0.5.0",
+  "description": "Artful Making skills for vibe coders. 16 skills across the Shape-to-Stage flow cycle — shape your spec, validate your premise, brief it, stage it clean. The mirror never goes dark.",
   "author": {
     "name": "Manifest AI",
     "url": "https://github.com/Mnfst-AI"
@@ -15,6 +15,9 @@
     "vibe-coding",
     "artful-making",
     "flow-cycle",
-    "stage-manager"
+    "stage-manager",
+    "invalidation",
+    "yagni",
+    "validation"
   ]
 }

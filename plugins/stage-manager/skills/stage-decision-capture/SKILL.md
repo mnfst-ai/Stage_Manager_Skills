@@ -58,77 +58,32 @@ If only the build output is provided: *"What was the original plan or spec? I ne
 
 ## Output Structure
 
-### Opening: Build Summary
+### Opening
 
-Three sentences. What was planned, what was built, and the headline number: **X decisions were specified by the builder. Y decisions were invented by the coding tool. Z specified decisions were adapted or changed.**
-
----
-
-### The Decisions-Made Manifest
-
-Organize by category. For each decision:
-
-**[Decision]**
-- **Classification:** Specified ✅ | Invented ⚠️ | Adapted 🔄
-- **Plan said:** [What the plan specified, or "Not mentioned"]
-- **Code does:** [What was actually implemented]
-- **Impact:** Low / Medium / High — based on how much downstream code depends on this choice
-- **Reversibility:** Easy / Moderate / Hard — how difficult to change this decision later
+One sentence: X decisions specified, Y invented, Z adapted — and where the inventions cluster.
 
 ---
 
-### Summary by Category
+### The Decisions
 
-| Category | Specified ✅ | Invented ⚠️ | Adapted 🔄 | Total |
-|----------|------------|------------|-----------|-------|
-| Architecture | | | | |
-| Data Model | | | | |
-| Libraries & Dependencies | | | | |
-| API Design | | | | |
-| Error Handling | | | | |
-| Security | | | | |
-| Performance | | | | |
-| UX Behavior | | | | |
-| Testing | | | | |
-| DevOps / Config | | | | |
-| **Total** | | | | |
+Present high-impact findings as a prioritized list. Each item is one line: what was decided and the consequence.
+
+- **P1** ⚠️ Invented — [Decision]: tool chose [X], plan said nothing. *High impact, hard to reverse — [consequence].*
+- **P1** 🔄 Adapted — [Decision]: plan said [X], tool changed to [Y]. *Builder's choice overridden — [consequence].*
+- **P2** ⚠️ Invented — [Decision]: tool chose [X]. *Medium impact — [consequence if left].*
+- **P3** ✅ Specified — [Decision]: built as planned. *No action needed.*
+
+List ⚠️ and 🔄 items first. Include a summary count: **Specified: X ✅ | Invented: Y ⚠️ | Adapted: Z 🔄**
 
 ---
 
-### High-Impact Inventions
+### Close
 
-List only the invented decisions with Medium or High impact. These are the ones the builder should know about — the choices that will compound downstream.
+**Address them? Yes / Pick one / Accept all**
 
-For each:
-- What was invented
-- Why it probably happened (the tool's likely reasoning)
-- What the builder should decide: accept, modify, or revert
-- The question that closes it
-
----
-
-### Adapted Decisions
-
-List decisions where the coding tool changed something the builder specified. These are especially important — the builder made a choice and the tool overrode it.
-
-For each:
-- What was specified
-- What was changed
-- Why it probably changed (technical constraint, better approach discovered, or silent override)
-- Whether the adaptation is an improvement or a regression
-
----
-
-### The Build Intelligence
-
-Step back. What patterns do you see in the inventions?
-
-- **Where did the tool invent the most?** (Which categories have the most ⚠️ items?)
-- **Were the inventions reasonable?** (Percentage that the builder would likely accept)
-- **What does this tell the builder about their spec?** (Where were the gaps?)
-- **What should the builder specify more carefully next time?** (Lessons for future prompts)
-
-This section feeds forward into future Shaping — the next time this builder runs Find the Holes, these patterns should inform what to look for.
+- **Yes** — walk through P1 inventions and adaptations one at a time. For each: accept, modify, or revert.
+- **Pick one** — the builder names which decision to address.
+- **Accept all** — acknowledge the tool's choices. Feed the manifest into `/ce:review` or `/ce:compound`.
 
 ---
 
@@ -170,7 +125,7 @@ decision_capture:
 
 - Open with: `# ═══ Stage Manager — Decision Capture ═══`
 - Major sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ▸ Feed-Forward Data`
+- The closing action uses: `## ★ Close`
 - Between major sections: blank line + `---` + blank line
 - End with the branded footer
 

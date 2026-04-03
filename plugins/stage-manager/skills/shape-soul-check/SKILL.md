@@ -61,78 +61,56 @@ The gap between what you find in the first pass and what you find in the second 
 
 ## Output Structure
 
-### Opening: The Original Spark
+### Opening
 
-Two or three sentences. What's the animating idea you can find in this document — the insight or intent that would explain why this work exists?
-
-If you can find it clearly — name it directly. Use the builder's language.
-
-If you can't find it — say so. That's the most important finding of all. A document without a discernible soul needs that named before anything else.
+One sentence naming the original animating idea — in the builder's language. If you can't find it, say so: that's the most important finding of all.
 
 ---
 
-### Is It Still Alive?
+### The Drift
 
-Honest assessment. One paragraph.
+If the soul is intact: *"No drift found. The original intent is alive. Keep going."*
 
-Where in the document does the original idea show up most clearly? Quote the passage. Name what's strong — where the soul is visible and the work is still pointed at what it meant to be.
+If there is drift, present findings as a prioritized list. Each item is one line: where the drift happened and the consequence if unnamed.
 
-Then: where has it been diluted? Not in a list — in prose. What happened to the original idea as it moved through design decisions, technical constraints, scope changes, and rounds of feedback?
+- **P1** — [Short name]: [what drifted from the original intent]. *Unnamed, [consequence to the soul].*
+- **P2** — [Short name]: [what shifted]. *Noticeable but [still recoverable if conscious].*
+- **P3** — [Short name]: [minor shift]. *Peripheral — doesn't touch the core.*
 
-If the soul is intact — say so. Not everything drifts. Sometimes a document is exactly what it set out to be.
-
----
-
-### Where the Drift Happened
-
-If there is drift — find 2-4 specific places where the original idea got compromised.
-
-For each:
-
-**[Short name]**
-
-> *[Quote the exact passage where the drift is visible]*
-
-**What the original idea called for here:**
-One sentence. What would this section look like if the soul were fully intact?
-
-**What happened instead:**
-One sentence. What choice was made, and what did it cost the original intent?
-
-**The question to ask:**
-One focused question that would help the builder decide whether this drift was intentional or accidental.
+Name 1-2 things still aligned as anchors the builder can rebuild from.
 
 ---
 
-### What's Still True
+### Close
 
-Before the builder can find their way back, they need to know what's still solid.
+**Realign? Yes / Pick one / Skip**
 
-Name two or three things in the document that are still fully aligned with the original intent — the places where the soul is visible and the work is doing what it set out to do.
-
-These are the anchors. The builder can rebuild from here.
-
----
-
-### The Way Back
-
-If there's drift — close with a clear path back to the original intent.
-
-Not a rewrite. Not a list of changes. One or two sentences naming the essential thing that would need to shift for the soul to be restored.
-
-Sometimes it's a decision that needs to be unmade. Sometimes it's a constraint that needs to be named and consciously accepted rather than silently absorbed. Sometimes it's the original user who needs to be brought back into the center.
-
-Name it specifically. Not generic advice.
+- **Yes** — walk through P1s one at a time. For each: name what the original idea called for, what happened instead, and the question that resolves it. After P1s: *"P1 drift addressed. [N] P2 items remain — worth revisiting or move on?"*
+- **Pick one** — the builder names which drift to address. Resolve it, then offer the prompt again.
+- **Skip** — note what was skipped and its likely consequence in one sentence.
 
 ---
 
-### The One Question
+### What's Next
 
-One question the builder should be able to answer before continuing.
+After drift is resolved (or the builder says they're done), guide the exit.
 
-Not "does this have soul" — that's too abstract. Something specific: *"Who is the person whose life this changes, and is that person still the center of every decision in this document?"* Or: *"What's the one thing this has to do better than anything else — and is every choice in this spec in service of that?"*
+*"Before we move to building, would you like to run another shape skill on this spec?"*
 
-The question should be answerable in one sentence. If it can't be answered in one sentence, the soul check found something real.
+Present as options:
+- **Find the Holes** — specification gaps where coding tools will invent behavior
+- **Collapsed Options** — finds decisions you've already committed to without knowing it
+- **Risk Sequence** — surfaces load-bearing assumptions and sequences them by cost-if-wrong
+- **I'm done shaping** — move to handoff
+
+If they run another skill, return here when that skill completes and ask again.
+
+**When done shaping:**
+
+*"How would you like to hand this off?"*
+
+- **Run the Brief** — `/sm:shape:brief` synthesizes all shape output into ranked problems, inline change suggestions, `Stage_Manager_Brief.md`, and a staged spec. Use this when multiple shape skills ran or the spec needs a clean handoff document.
+- **Skip the Brief** — go direct to Write as .md / Submit to Chunking / Both. Use this for small jobs where one skill was enough.
 
 ---
 
@@ -153,7 +131,7 @@ Structure output for scanability in terminal and Claude Code:
 
 - Open with a decorated title: `# ═══ Stage Manager — Soul Check ═══`
 - Major analysis sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ★ The One Question`
+- The closing action uses: `## ★ Close`
 - Between major sections, use a blank line + `---` + blank line for clear visual breaks
 - End every analysis with the branded footer above
 

@@ -2,7 +2,7 @@
 #
 # Stage Manager — Standalone Installer
 #
-# Installs all 11 Stage Manager skills into Claude Code as slash commands.
+# Installs all 16 Stage Manager skills into Claude Code as slash commands.
 # Does NOT require Compound Engineering or Superpowers.
 #
 # For the enhanced CE integration, use install-enhanced-ce.sh instead.
@@ -81,6 +81,11 @@ SKILL_DIRS=(
     stage-live-mirror
     stage-decision-capture
     coherence-check
+    yagni
+    invalidate-prep
+    invalidate-interview
+    invalidate-score
+    stage-manage
 )
 
 INSTALLED=0
@@ -143,7 +148,7 @@ for skill in "${SKILL_DIRS[@]}"; do
 done
 
 if [[ $ERRORS -eq 0 ]]; then
-    ok "All 11 skills verified"
+    ok "All 16 skills verified"
 else
     warn "$ERRORS verification warnings (see above)"
 fi
@@ -161,25 +166,25 @@ echo "  Shape:"
 echo "    /sm:shape:find-holes  /sm:shape:collapsed-options  /sm:shape:risk-sequence"
 echo "    /sm:shape:soul-check  /sm:shape:gate"
 echo ""
-echo "  Shape Brief (handoff to CE or Superpowers):"
+echo "  Shape Brief:"
 echo "    /sm:shape:brief"
 echo ""
 echo "  Stage:"
 echo "    /sm:stage:chunking  /sm:stage:prompt-craft"
 echo "    /sm:stage:live-mirror  /sm:stage:decision-capture"
 echo ""
+echo "  Validate:"
+echo "    /sm:yagni  /sm:invalidate-prep"
+echo "    /sm:invalidate-interview  /sm:invalidate-score"
+echo ""
 echo "  Any Node:"
-echo "    /sm:coherence-check"
+echo "    /sm:coherence-check  /sm:stage-manage"
+echo ""
+echo "  ── Start a session ──"
+echo "  /sm:stage-manage — opens a session and watches for signals"
 echo ""
 echo "  ── The Shape Brief Flow ──"
 echo "  Run shape skills → /sm:shape:brief → Stage_Manager_Brief.md"
-echo "  + [Spec_Name]-Staged.md → CE or Superpowers"
-echo ""
-echo "  Want Stage Manager integrated with Compound Engineering?"
-echo "  Run: bash install-enhanced-ce.sh"
-echo ""
-echo "  Want Stage Manager integrated with Superpowers?"
-echo "  Run: bash install-superpowers.sh"
 echo ""
 echo -e "${CYAN}═══ Stage Manager · github.com/Mnfst-AI/Stage_Manager_Skills ═══${NC}"
 echo ""

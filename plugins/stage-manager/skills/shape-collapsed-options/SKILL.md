@@ -97,79 +97,54 @@ Look for:
 
 ## Output Structure
 
-### Opening: The Breakthrough You're Protecting
+### Opening
 
-One sentence naming the dimension this builder is trying to push on. If you can't find it, say that clearly — it's the most important collapsed option of all.
-
-Then one sentence on what's at risk if these decisions don't get reopened.
+One sentence naming the breakthrough dimension and how many options have collapsed around it.
 
 ---
 
 ### The Collapsed Options
 
-Present 4-6 collapsed options. Order them by how close they are to the breakthrough dimension — the ones that most directly threaten the core differentiation come first.
+Present findings as a prioritized list. Each item is one line: what got decided, what it closed off, and the consequence if left unchallenged.
 
-Score each collapsed option with a priority:
+- **P1** — [Short name]: [what got decided without the builder knowing]. *Left unchallenged, [consequence to the breakthrough].*
+- **P2** — [Short name]: [what got decided]. *Tolerable if conscious, but [what's lost].*
+- **P3** — [Short name]: [what got decided]. *Peripheral — doesn't touch the breakthrough.*
 
-- **P1** — This directly threatens the breakthrough dimension. Reopen before building.
-- **P2** — Worth considering, but the conventional choice is tolerable if conscious.
-- **P3** — Peripheral. Doesn't touch what makes this different.
-
-For each:
-
-**[Short name]** — **Priority: P1/P2/P3**
-
-> *[Quote the exact passage or decision from the document]*
-
-**What got decided here:**
-Plain language. What choice was made, and what did it close off?
-
-**Why this might matter:**
-One sentence. How does this choice affect the builder's ability to reach the breakthrough?
-
-**The options worth considering before committing:**
-Two or three genuine alternatives. Not exhaustive — just enough to show the option space isn't as narrow as the document assumes. Be specific.
-
-**The question to answer first:**
-One focused question. If they can answer this, they'll know which option is right.
+4-6 items. Order by proximity to the breakthrough dimension — P1s first.
 
 ---
 
-### The Pattern You're Seeing
+### Close
 
-Step back. Is there a pattern? Are options collapsing because the builder is optimizing for speed? For familiarity? For completeness before proof? For what the technology makes easy rather than what the user needs?
+**Reopen them? Yes / Pick one / Skip**
 
-Name the pattern in one or two sentences. This is the most useful thing you can say.
-
----
-
-### What's Proven vs What's Assumed
-
-Two columns, plainly stated.
-
-**What's already proven** — things the prototype or spec has actually demonstrated. These are safe to build on.
-
-**What's still assumed** — things the spec treats as settled but haven't been tested yet. These are where collapsed options are most dangerous.
+- **Yes** — walk through P1s one at a time. For each: name 2-3 genuine alternatives, then ask the question that closes it. After P1s: *"P1 options reopened. [N] P2 items remain — worth considering or move on?"*
+- **Pick one** — the builder names which option to reopen. Resolve it, then offer the prompt again.
+- **Skip** — note what was skipped and its likely consequence in one sentence.
 
 ---
 
-### The Breakthrough Protection Plan
+### What's Next
 
-End with energy and a clear path forward. Three parts:
+After options are resolved (or the builder says they're done), guide the exit.
 
-**Protect this first** — the one thing that must stay open and flexible until the breakthrough is proven. Name it specifically.
+*"Before we move to building, would you like to run another shape skill on this spec?"*
 
-**Prove this before building the rest** — the smallest possible experiment that would confirm the breakthrough is real. One sentence.
+Present as options:
+- **Find the Holes** — specification gaps where coding tools will invent behavior
+- **Risk Sequence** — surfaces load-bearing assumptions and sequences them by cost-if-wrong
+- **Soul Check** — deep read on whether the original animating idea is still alive
+- **I'm done shaping** — move to handoff
 
-**Options to retire the risk** — two or three lightweight experiments or approaches that would validate the breakthrough before any conventional building starts. The cost of delay on unproven breakthroughs is the highest cost in the system. Table stakes can be generated quickly once the core is proven — don't build them first.
+If they run another skill, return here when that skill completes and ask again.
 
----
+**When done shaping:**
 
-### The One Move
+*"How would you like to hand this off?"*
 
-One clear action. Not a list. The single thing that protects the most option space right now.
-
-Specific to this document. Not generic advice.
+- **Run the Brief** — `/sm:shape:brief` synthesizes all shape output into ranked problems, inline change suggestions, `Stage_Manager_Brief.md`, and a staged spec. Use this when multiple shape skills ran or the spec needs a clean handoff document.
+- **Skip the Brief** — go direct to Write as .md / Submit to Chunking / Both. Use this for small jobs where one skill was enough.
 
 ---
 
@@ -204,7 +179,7 @@ Structure output for scanability in terminal and Claude Code:
 
 - Open with a decorated title: `# ═══ Stage Manager — Collapsed Options ═══`
 - Major analysis sections use: `## ▸ [Section Name]`
-- The closing action uses: `## ★ The One Move`
+- The closing action uses: `## ★ Close`
 - Between major sections, use a blank line + `---` + blank line for clear visual breaks
 - End every analysis with the branded footer above
 
