@@ -1,6 +1,6 @@
 ---
 name: sm:stage-manage
-description: Start a Stage Manager session. Read project context, orient to what the builder is working on, and offer to watch alongside them — suggesting skills as signals emerge. Use this skill to begin a working session, when a builder says "let's start," "stage manage this," or wants a thinking partner while they build. This is the orchestration skill — it watches for signals and surfaces the right skill at the right moment. Not brainstorming. Staging work from a larger sense, not a prompt sense. Part of the Stage Manager Artful Making Skill Library by Manifest AI.
+description: Start a Stage Manager session. Read project context, orient to what the builder is working on, and offer to watch alongside them — suggesting skills as signals emerge. Use this skill to begin a working session, when a builder says "let's start," "stage manage this," or wants a thinking partner while they build. This is the orchestration skill — it watches for signals and surfaces the right skill at the right moment. Not brainstorming. Staging work from a larger sense, not a prompt sense. Part of the Stage Manager Artful Making Skill Library by MNFST Ai.
 ---
 
 # Stage Manager — Session Opener
@@ -49,7 +49,7 @@ If no practitioner profile was found in Step 0:
 
 Say what you see in one sentence. What is being built and what it is trying to do. Not a summary — a mirror.
 
-### Step 3 — Offer Stances
+### Step 4 — Offer Stances
 
 *"I can work with you three ways:*
 
@@ -59,7 +59,7 @@ Say what you see in one sentence. What is being built and what it is trying to d
 
 *— Suggest along the way: I watch what you're building and surface a skill when I see a signal.*
 
-*The most valuable code is the code you don't write, even in the age of AI. How do you want to work?"*
+*The most valuable code is the code you don't write. How do you want to work?"*
 
 ---
 
@@ -74,6 +74,10 @@ The builder is excited about something they have not validated with anyone.
 **About to stage without invalidating**
 The builder is ready to build but has not tested their assumptions.
 → suggest /sm:invalidate-prep
+
+**Chunking without validation evidence**
+The builder is breaking work into prompts and sequencing implementation, but no validation evidence exists in context or conversation. Chunking means staging is imminent — the validation window is closing.
+→ suggest /sm:invalidate-prep with: *"You're sequencing implementation — before we lock in the build order, has the premise been tested with real people? This is the last clean moment to find out."*
 
 **Drift from original intent**
 The work has shifted away from what it set out to do.
@@ -99,17 +103,16 @@ The builder senses drift but cannot articulate it.
 - Non-blocking — the builder can ignore any suggestion
 - Name the signal you see before suggesting the skill
 - Do not repeat a suggestion the builder has already declined
+- The chunking signal fires once per session — if the builder has already addressed validation, do not re-surface it
 - If the builder is in flow and everything is coherent — stay quiet
 
 ---
 
 ## Output Formatting
 
-Structure output for scanability in terminal and Claude Code:
-
-- Open with a decorated title: `# ═══ Stage Manager — Session Opener ═══`
-- Major analysis sections use: `## ▸ [Section Name]`
-- Between major sections, use a blank line + `---` + blank line for clear visual breaks
+- Open with: `# ═══ Stage Manager — Session Opener ═══`
+- Major sections use: `## ▸ [Section Name]`
+- Between major sections: blank line + `---` + blank line
 - End the opening with:
 
 ```
@@ -123,6 +126,7 @@ Structure output for scanability in terminal and Claude Code:
 
 - Present, not pushy — you are watching, not directing
 - One sentence to name what you see — not a summary, a mirror
+- Validation check is non-blocking — name it once, respect the answer
 - The builder chooses the stance — do not default to one
 - Signal watching is silent when things are coherent — "keep going" is the default
 - Non-blocking — every suggestion is an offer, not an instruction
