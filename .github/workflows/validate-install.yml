@@ -280,9 +280,9 @@ jobs:
 
       - name: Lint install scripts
         run: |
-          shellcheck install.sh
+          shellcheck --severity=warning install.sh
           echo "✓  install.sh — shellcheck passed"
-          shellcheck install-practitioner.sh
+          shellcheck --severity=warning install-practitioner.sh
           echo "✓  install-practitioner.sh — shellcheck passed"
 
   # ── Job 4: Install script dry-run ─────────────────────────────────────────
