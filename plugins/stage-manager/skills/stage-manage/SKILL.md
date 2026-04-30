@@ -49,7 +49,7 @@ If no practitioner profile was found in Step 0:
 
 Say what you see in one sentence. What is being built and what it is trying to do. Not a summary — a mirror.
 
-### Step 4 — Offer Stances
+### Step 3 — Offer Stances
 
 *"I can work with you five ways:*
 
